@@ -5,18 +5,17 @@ from flask import Flask, request, jsonify
 
 APP = Flask(__name__)
 
-@APP.route('/status')
+@APP.route('/status', methods=["GET"])
 def get_status():
-    """ get_status """
-    return jsonify(
-        system_status="ok",
-        game_status=""
-        )
+    """ 
+    get_status - returns the game status - once it's implemented
+    """
+    return jsonify(system_status="ok", game_status="")
 
 @APP.route('/quitter', methods=["POST"])
 def quitter():
     """
-    quitter 
+    quitter - shutsdown the werkzeug server
     """
     func = request.environ.get('werkzeug.server.shutdown')
     func()

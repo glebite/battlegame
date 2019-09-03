@@ -39,14 +39,6 @@ class Grid:
 
 def main():
     """ main """
-    print("Executing tests...")
-    x_obj = Grid()
-    assert x_obj.rows == 10, "rows should be 10"
-    assert x_obj.cols == 10, "cols should be 10"
-    y_obj = Grid((5, 3))
-    assert y_obj.rows == 5
-    assert y_obj.cols == 3
-    assert isinstance(y_obj.create_grid(), list) is True
     z_obj = Grid((-1, 5))
     try:
         assert isinstance(z_obj.create_grid(), list) is True

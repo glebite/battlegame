@@ -1,9 +1,7 @@
 """
 battle_server.py
 """
-from flask import Flask, abort, request
-from flask import jsonify
-import sys
+from flask import Flask, request, jsonify
 
 APP = Flask(__name__)
 
@@ -23,7 +21,8 @@ def quitter():
     func = request.environ.get('werkzeug.server.shutdown')
     func()
     return jsonify(system_status="quitting", game_status="")
-    
+
+
 if __name__ == "__main__":
     """
     debug=True allows for auto-reload on file changes

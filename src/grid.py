@@ -39,17 +39,7 @@ class Grid:
 
 def main():
     """ main """
-    z_obj = Grid((-1, 5))
-    try:
-        assert isinstance(z_obj.create_grid(), list) is True
-    except ValueError as e_exception:
-        print("Exception raised as expected: {}".format(e_exception))
-
-    assert isinstance(x_obj.create_grid(), list) is True
-    assert x_obj.create_own_grid() is True
-    assert x_obj.set_grid_position(5, 5, 1) is True
-    assert x_obj.get_grid_position(5, 5) == 1
-    assert x_obj.get_grid_position(5, 4) == 0
+    pass
 
 if __name__ == "__main__":
     main()

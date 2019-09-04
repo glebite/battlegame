@@ -1,11 +1,8 @@
 """
-test_server.py
+test_grid.py
 
 All tests will be in @pytest markup format.
 
-test_status
-...
-test_last
 """
 import pytest
 import sys

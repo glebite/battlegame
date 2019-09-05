@@ -10,6 +10,13 @@ test_last
 import pytest
 import requests
 import subprocess
+import time 
+
+@pytest.mark.test_id(0)
+def test_start_server():
+    subprocess.Popen(['./launch_server.sh'], shell=True)
+    time.sleep(10)
+    assert True
 
 @pytest.mark.test_id(2)
 def test_status():
@@ -20,7 +27,7 @@ def test_status():
     response = requests.get('http://127.0.0.1:5150/status')
     assert response.status_code == 200
 
-@pytest.mark.test_id(5)
+@pytest.mark.test_id(9999)
 def test_quitter():
     """
     """

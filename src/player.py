@@ -1,11 +1,14 @@
 """
 player.py
 """
+from grid import Grid
+
 
 class Player:
     """ class Player """
     def __init__(self, name=None):
-        self.name = name
+        self.player_name = name
+        self.game_grid = Grid()
 
 def main():
     """ main """

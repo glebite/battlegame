@@ -14,4 +14,7 @@ def test_player_creation():
     player_obj = Player(name="Bob")
     assert player_obj.player_name is "Bob"
 
-    
+@pytest.mark.test_id(2)
+def test_player_creation_default():
+    player_obj = Player()
+    assert player_obj.player_name is None

@@ -33,6 +33,18 @@ class Player:
         """
         self.hits += 1
 
+    def player_misses(self):
+        """
+        player_misses - a method to record a miss
+        """
+        self.misses += 1
+
+    def player_sinks_enemy(self):
+        """
+        player - just in case we sink an enemy
+        """
+        self.enemy_sunk += 1
+
     def debug_status(self):
         """
         debug_status - simple logging output for debug usage

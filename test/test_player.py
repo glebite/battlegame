@@ -41,3 +41,15 @@ def test_player_reset():
     player_obj.player_hits()
     player_obj.reset_stats()
     assert player_obj.hits == 0 and player_obj.misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0    
+
+@pytest.mark.test_id(7)
+def test_player_misses():
+    player_obj = Player()
+    player_obj.player_misses()
+    assert player_obj.hits == 0 and player_obj.misses == 1 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
+
+@pytest.mark.test_id(7)
+def test_player_sinks_enemy():
+    player_obj = Player()
+    player_obj.player_sinks_enemy()
+    assert player_obj.hits == 0 and player_obj.misses == 0 and player_obj.enemy_sunk == 1 and player_obj.mine_sunk == 0

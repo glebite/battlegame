@@ -45,14 +45,20 @@ class Player:
         """
         self.enemy_sunk += 1
 
-    def debug_status(self):
+    def __rpr__(self):
         """
-        debug_status - simple logging output for debug usage
+        __rpr__ internal state dump
         """
-        print('Player: {}\n\tHits: {}\n\tMisses: {}\n\t'
-              'Enemy Sunk: {}\n\tMine Sunk: {}\n'.
-              format(self.player_name, self.hits, self.misses,
-                     self.enemy_sunk, self.mine_sunk))
+        return "%s(%r)" % (self.__class__, self.__dict__)
+
+    def __str__(self):
+        """
+        __str__ representation of the player
+        """
+        return('Player: {}\n\tHits: {}\n\tMisses: {}\n\t'
+               'Enemy Sunk: {}\n\tMine Sunk: {}\n'.
+               format(self.player_name, self.hits, self.misses,
+                      self.enemy_sunk, self.mine_sunk))
 
 def main():
     """ main """

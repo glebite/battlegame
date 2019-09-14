@@ -1,13 +1,19 @@
 """
 player.py
 """
+import os
+import logging
 from grid import Grid
+
+FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
+logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
+LOG = logging.getLogger(__name__)
 
 
 class Player:
     """ class Player """
-    hits = 0
-    misses = 0
+    my_hits = 0
+    my_misses = 0
     enemy_sunk = 0
     mine_sunk = 0
 
@@ -15,6 +21,7 @@ class Player:
         """
         __init__ - all of the init goodness
         """
+        LOG.debug("Init %s with player_name = %s", self.__class__, name)
         self.player_name = name
         self.game_grid = Grid()
 
@@ -22,28 +29,33 @@ class Player:
         """
         reset_stats - used to reset the user for another game
         """
-        self.hits = 0
-        self.misses = 0
+        LOG.debug("player_name = %s", self.player_name)
+
+        self.my_hits = 0
+        self.my_misses = 0
         self.enemy_sunk = 0
         self.mine_sunk = 0
 
-    def player_hits(self):
+    def hits(self):
         """
         player_hits - a method to record a hit
         """
-        self.hits += 1
+        self.my_hits += 1
+        LOG.debug("player_hits = %s", self.my_hits)
 
-    def player_misses(self):
+    def misses(self):
         """
         player_misses - a method to record a miss
         """
-        self.misses += 1
+        self.my_misses += 1
+        LOG.debug("player_misses = %s", self.my_misses)
 
-    def player_sinks_enemy(self):
+    def sinks_enemy(self):
         """
         player - just in case we sink an enemy
         """
         self.enemy_sunk += 1
+        LOG.debug("player_sinks_enemy = %s", self.enemy_sunk)
 
     def __rpr__(self):
         """
@@ -57,7 +69,7 @@ class Player:
         """
         return('Player: {}\n\tHits: {}\n\tMisses: {}\n\t'
                'Enemy Sunk: {}\n\tMine Sunk: {}\n'.
-               format(self.player_name, self.hits, self.misses,
+               format(self.player_name, self.my_hits, self.my_misses,
                       self.enemy_sunk, self.mine_sunk))
 
 def main():

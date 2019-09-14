@@ -27,29 +27,29 @@ def test_player_grid_default():
 @pytest.mark.test_id(4)
 def test_player_initial_stats():
     player_obj = Player()
-    assert player_obj.hits == 0 and player_obj.misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
+    assert player_obj.my_hits == 0 and player_obj.my_misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
 
 @pytest.mark.test_id(5)
 def test_player_hits():
     player_obj = Player()
-    player_obj.player_hits()
-    assert player_obj.hits == 1 and player_obj.misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
+    player_obj.hits()
+    assert player_obj.my_hits == 1 and player_obj.my_misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
 
 @pytest.mark.test_id(6)
 def test_player_reset():
     player_obj = Player()
-    player_obj.player_hits()
+    player_obj.hits()
     player_obj.reset_stats()
-    assert player_obj.hits == 0 and player_obj.misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0    
+    assert player_obj.my_hits == 0 and player_obj.my_misses == 0 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0    
 
 @pytest.mark.test_id(7)
 def test_player_misses():
     player_obj = Player()
-    player_obj.player_misses()
-    assert player_obj.hits == 0 and player_obj.misses == 1 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
+    player_obj.misses()
+    assert player_obj.my_hits == 0 and player_obj.my_misses == 1 and player_obj.enemy_sunk == 0 and player_obj.mine_sunk == 0
 
 @pytest.mark.test_id(7)
 def test_player_sinks_enemy():
     player_obj = Player()
-    player_obj.player_sinks_enemy()
-    assert player_obj.hits == 0 and player_obj.misses == 0 and player_obj.enemy_sunk == 1 and player_obj.mine_sunk == 0
+    player_obj.sinks_enemy()
+    assert player_obj.my_hits == 0 and player_obj.my_misses == 0 and player_obj.enemy_sunk == 1 and player_obj.mine_sunk == 0

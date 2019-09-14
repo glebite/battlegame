@@ -27,6 +27,14 @@ def test_status():
     response = requests.get('http://127.0.0.1:5150/status')
     assert response.status_code == 200
 
+@pytest.mark.test_id(4)
+def test_create_player():
+    """ test_create_player
+    Creates a player - stubbed at first 
+    """
+    response = requests.post('http://127.0.0.1:5150/player')
+    assert response.status_code == 200
+
 @pytest.mark.test_id(9999)
 def test_quitter():
     """

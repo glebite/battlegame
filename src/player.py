@@ -57,6 +57,13 @@ class Player:
         self.enemy_sunk += 1
         LOG.debug("player_sinks_enemy = %s", self.enemy_sunk)
 
+    def place_ship(self, ship_piece):
+        """
+        place_ship - places a ship piece in the grid
+        TODO: fill in the blanks - define ship_piece object
+        """
+        pass
+
     def __rpr__(self):
         """
         __rpr__ internal state dump

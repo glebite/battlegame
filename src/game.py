@@ -20,12 +20,13 @@ class Game:
         LOG.debug("Init %s with game_name = %s", self.__class__, name)
         self.game_name = name
 
-    def add_player(self, player_obj):
+    def add_player(self, player_name):
         """
         add_player
         """
         if len(self.players) == 2:
             return False
+        player_obj = Player(name=player_name)
         self.players.append(player_obj)
         return True
 

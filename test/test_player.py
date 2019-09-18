@@ -53,3 +53,8 @@ def test_player_sinks_enemy():
     player_obj = Player()
     player_obj.sinks_enemy()
     assert player_obj.my_hits == 0 and player_obj.my_misses == 0 and player_obj.enemy_sunk == 1 and player_obj.mine_sunk == 0
+
+@pytest.mark.test_id(8)
+def test_player_grid_default():
+    player_obj = Player()
+    assert player_obj.view_grid.rows == 10 and player_obj.view_grid.cols == 10

@@ -24,6 +24,7 @@ class Player:
         LOG.debug("Init %s with player_name = %s", self.__class__, name)
         self.player_name = name
         self.game_grid = Grid()
+        self.view_grid = Grid()
 
     def reset_stats(self):
         """

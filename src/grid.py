@@ -37,6 +37,14 @@ class Grid:
         self.grid[row][col] = value
         return True
 
+    def __str__(self):
+        out_string = ""
+        for row in range(self.rows):
+            for col in range(self.cols):
+                out_string += str(self.grid[row][col]) + " "
+            out_string += "\n"
+        return out_string
+
 def main():
     """ main """
 

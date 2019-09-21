@@ -9,15 +9,23 @@ logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
 
 
+class ShipPieceSizeException(Exception):
+    """
+    ShipPieceSizeException - raised if the size is bad
+    """
+
+
 class ShipPiece:
     """ class ShipPiece """
-    def __init__(self, size, name):
+    def __init__(self, ship_size, ship_name):
         """
         __init__ - all of the init goodness that there is to have
         """
-        self.__size = size
-        self.__name = name
-        LOG.debug("Init %s with size: %s name: %s", self.__class__, size, name)
+        if ship_size <= 0:
+            raise ShipPieceSizeException
+        self.__size = ship_name
+        self.__name = ship_name
+        LOG.debug("Init %s with size: %s name: %s", self.__class__, ship_size, ship_name)
 
     @property
     def size(self):

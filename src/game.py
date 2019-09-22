@@ -6,6 +6,7 @@ import logging
 from player import Player
 
 MAX_PLAYERS = 2
+GAME_INITIATION = 1
 
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
@@ -15,6 +16,7 @@ LOG = logging.getLogger(__name__)
 class Game:
     """ class Game """
     players = list()
+    game_status = GAME_INITIATION
     def __init__(self, name=None):
         """
         __init__ - all of the init goodness

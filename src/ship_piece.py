@@ -4,10 +4,10 @@ ship_piece.py
 import os
 import logging
 
+
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
-
 
 class ShipPieceSizeException(Exception):
     """
@@ -17,13 +17,13 @@ class ShipPieceSizeException(Exception):
 
 class ShipPiece:
     """ class ShipPiece """
-    def __init__(self, ship_size, ship_name):
+    def __init__(self, ship_size=None, ship_name=None):
         """
         __init__ - all of the init goodness that there is to have
         """
         if ship_size <= 0:
-            raise ShipPieceSizeException
-        self.__size = ship_name
+            raise ShipPieceSizeException()
+        self.__size = ship_size
         self.__name = ship_name
         LOG.debug("Init %s with size: %s name: %s", self.__class__, ship_size, ship_name)
 

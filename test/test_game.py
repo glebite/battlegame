@@ -7,7 +7,7 @@ All tests will be in @pytest markup format.
 import sys
 import pytest
 sys.path.append('../src')
-from game import Game
+from game import *
 
 @pytest.mark.test_id(1)
 def test_game_creation():
@@ -25,7 +25,7 @@ def test_two_player_creation():
     game_obj = Game(name="Bob")
     game_obj.add_player("A")
     game_obj.add_player("B")
-    assert len(game_obj.return_players()) == 2
+    assert len(game_obj.return_players()) == MAX_PLAYERS
 
 @pytest.mark.test_id(4)
 def test_three_player_creation():
@@ -40,7 +40,7 @@ def test_three_player_creation_count_check():
     game_obj.add_player("A")
     game_obj.add_player("B")
     game_obj.add_player("C")
-    assert len(game_obj.return_players()) == 2
+    assert len(game_obj.return_players()) == MAX_PLAYERS
 
 @pytest.mark.test_id(6)
 def test_player_name():

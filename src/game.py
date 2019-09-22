@@ -5,6 +5,8 @@ import os
 import logging
 from player import Player
 
+MAX_PLAYERS = 2
+
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
@@ -24,7 +26,7 @@ class Game:
         """
         add_player
         """
-        if len(self.players) == 2:
+        if len(self.players) == MAX_PLAYERS:
             return False
         player_obj = Player(name=player_name)
         self.players.append(player_obj)

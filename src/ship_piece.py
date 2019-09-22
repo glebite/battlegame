@@ -14,6 +14,10 @@ class ShipPieceSizeException(Exception):
     ShipPieceSizeException - raised if the size is bad
     """
 
+class ShipPieceNameException(Exception):
+    """
+    """
+
 
 class ShipPiece:
     """ class ShipPiece """
@@ -23,6 +27,8 @@ class ShipPiece:
         """
         if ship_size <= 0:
             raise ShipPieceSizeException()
+        if ship_name is None or len(ship_name) == 0:
+            raise ShipPieceNameException()
         self.__size = ship_size
         self.__name = ship_name
         LOG.debug("Init %s with size: %s name: %s", self.__class__, ship_size, ship_name)

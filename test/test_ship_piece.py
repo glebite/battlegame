@@ -26,3 +26,19 @@ def test_ship_piece_creation_size_exception():
         assert False
     except ShipPieceSizeException as raised_exception:
         assert True
+
+@pytest.mark.test_id(4)
+def test_ship_piece_creation_name_exception_zero():
+    try:
+        sp_obj = ShipPiece(ship_size=2, ship_name="")
+        assert False
+    except ShipPieceNameException as raised_exception:
+        assert True
+
+@pytest.mark.test_id(5)
+def test_ship_piece_creation_name_exception_none():
+    try:
+        sp_obj = ShipPiece(ship_size=2)
+        assert False
+    except ShipPieceNameException as raised_exception:
+        assert True        

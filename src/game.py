@@ -12,15 +12,21 @@ FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
 
+class GameMaxPlayersExceeded(Exception):
+    """
+    MaxPlayersExceeded - exception
+    """
+
 
 class Game:
     """ class Game """
-    players = list()
-    game_status = GAME_INITIATION
+
     def __init__(self, name=None):
         """
         __init__ - all of the init goodness
         """
+        self.players = list()
+        self.game_status = GAME_INITIATION
         LOG.debug("Init %s with game_name = %s", self.__class__, name)
         self.game_name = name
 
@@ -29,7 +35,7 @@ class Game:
         add_player
         """
         if len(self.players) == MAX_PLAYERS:
-            return False
+            raise GameMaxPlayersExceeded()
         player_obj = Player(name=player_name)
         self.players.append(player_obj)
         return True
@@ -40,6 +46,7 @@ class Game:
         TODO: do more
         """
         return self.players
+
 
 def main():
     """ main """

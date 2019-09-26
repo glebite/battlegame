@@ -58,3 +58,8 @@ def test_player_sinks_enemy():
 def test_player_grid_default():
     player_obj = Player()
     assert player_obj.view_grid.rows == 10 and player_obj.view_grid.cols == 10
+
+@pytest.mark.test_id(9)
+def test_player_place_ship():
+    player_obj = Player()
+    assert player_obj.place_ship("hornblower") == "hornblower"

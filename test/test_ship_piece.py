@@ -42,3 +42,8 @@ def test_ship_piece_creation_name_exception_none():
         assert False
     except ShipPieceNameException as raised_exception:
         assert True        
+
+@pytest.mark.test_id(6)
+def test_ship_piece_creation_hole_size():
+    sp_obj = ShipPiece(ship_size=2, ship_name="destroyer")
+    assert len(sp_obj.holes) == 2

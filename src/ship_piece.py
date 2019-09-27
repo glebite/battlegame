@@ -16,6 +16,7 @@ class ShipPieceSizeException(Exception):
 
 class ShipPieceNameException(Exception):
     """
+    ShipPieceSizeException - raised if the name was empty
     """
 
 
@@ -30,6 +31,7 @@ class ShipPiece:
         if ship_name is None or len(ship_name) == 0:
             raise ShipPieceNameException()
         self.__size = ship_size
+        self.holes = [0 for i in range(0,self.__size)]
         self.__name = ship_name
         LOG.debug("Init %s with size: %s name: %s", self.__class__, ship_size, ship_name)
 

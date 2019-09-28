@@ -2,6 +2,17 @@
 grid.py
 
 """
+class GridIncorrectOrientationException(Exception):
+    """ if orientation is not proper """
+
+class GridVerticalPlacementException(Exception):
+    """ if vertical placement is wrong"""
+
+class GridHorizontalPlacementException(Exception):
+    """ if horizontal placement is wrong """
+
+class GridBadSeedLocationException(Exception):
+    """ if row/col position are out of bounds of the grid """
 
 
 class Grid:
@@ -37,6 +48,30 @@ class Grid:
         self.grid[row][col] = value
         return True
 
+    def test_place_ship(self, r_pos, c_pos, ship_piece, orientation):
+        """
+        place_ship
+
+        placement is based on r_pos, c_pos, size of ship_piece, and orientation
+                  based on that from that seed point
+        """
+        allowed_orientations = ['horizontal', 'vertical']
+        if orientation in allowed_orientations:
+            pass
+        else:
+            raise GridIncorrectOrientationException()
+        if r_pos < 0 or r_pos > self.rows:
+            raise GridBadSeedLocationException()
+        if c_pos < 0 or c_pos > self.rows:
+            raise GridBadSeedLocationException()
+        if orientation == "horizontal":
+            if c_pos + ship_piece.size > self.cols:
+                raise GridHorizontalPlacementException()
+        if orientation == "vertical":
+            if r_pos + ship_piece.size > self.rows:
+                raise GridVerticalPlacementException()
+        return True
+
     def __str__(self):
         out_string = ""
         for row in range(self.rows):
@@ -44,6 +79,7 @@ class Grid:
                 out_string += str(self.grid[row][col]) + " "
             out_string += "\n"
         return out_string
+
 
 def main():
     """ main """

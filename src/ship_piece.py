@@ -45,6 +45,13 @@ class ShipPiece:
         """ name retrieval """
         return self.__name
 
+    def still_floating(self):
+        """ still_floating """
+        if self.holes.count(1) == len(self.holes):
+            return False
+        else:
+            return True
+
 
 def main():
     """

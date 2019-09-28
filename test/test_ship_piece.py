@@ -47,3 +47,14 @@ def test_ship_piece_creation_name_exception_none():
 def test_ship_piece_creation_hole_size():
     sp_obj = ShipPiece(ship_size=2, ship_name="destroyer")
     assert len(sp_obj.holes) == 2
+
+@pytest.mark.test_id(7)
+def test_ship_still_floating_default():
+    sp_obj = ShipPiece(ship_size=2, ship_name="minnow")
+    assert sp_obj.still_floating() == True
+
+@pytest.mark.test_id(8)
+def test_ship_still_floating_filled():
+    sp_obj = ShipPiece(ship_size=1,ship_name="tug")
+    sp_obj.holes[0] = 1
+    assert sp_obj.still_floating() == False

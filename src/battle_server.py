@@ -4,6 +4,7 @@ battle_server.py
 import os
 import logging
 from flask import Flask, request, jsonify
+from game import *
 
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
@@ -29,14 +30,31 @@ def quitter():
     func()
     return jsonify(system_status="quitting", game_status="")
 
-@APP.route('/player', methods=["POST"])
+@APP.route('/player', methods=["GET", "POST"])
 def player():
     """
     player - first Create (POST)
     """
-    LOG.debug("POST /player")
-    return jsonify(status="Created", game_stsatus="")
+    if request.method == 'POST':
+        LOG.debug("POST /player")
+        return jsonify(status="Created", game_status="")
+    elif request.method == 'GET':
+        LOG.debug("GET /player")
+        return jsonify(players="[]")
 
+@APP.route('/game', methods=["GET", "POST"])
+def game():
+    """
+    game
+    """
+    if request.method == 'POST':
+        LOG.debug("POST /game - starting a game")
+        name = request.form['name']
+        game_obj = Game(name)
+        return jsonify(status="Coolio")
+    elif request.method == 'GET':
+        LOG.debug("GET /game - tell me more about the game...")
+        return jsonify(status="And the gang")
 
 
 if __name__ == "__main__":

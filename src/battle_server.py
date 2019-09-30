@@ -11,6 +11,7 @@ logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
 
 APP = Flask(__name__)
+GAME_OBJ = None
 
 @APP.route('/status', methods=["GET"])
 def get_status():
@@ -47,10 +48,11 @@ def game():
     """
     game
     """
+    global GAME_OBJ
     if request.method == 'POST':
         LOG.debug("POST /game - starting a game")
         name = request.form['name']
-        game_obj = Game(name)
+        GAME_OBJ = Game(name)
         return jsonify(status="Coolio")
     elif request.method == 'GET':
         LOG.debug("GET /game - tell me more about the game...")

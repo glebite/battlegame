@@ -3,7 +3,7 @@ battle_server.py
 """
 import os
 import logging
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from game import *
 
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
@@ -36,9 +36,13 @@ def player():
     """
     player - first Create (POST)
     """
+    global GAME_OBJ
     if request.method == 'POST':
         LOG.debug("POST /player")
-        return jsonify(status="Created", game_status="")
+        if GAME_OBJ is None:
+            return Response("Game not created.", status=404)
+        else:
+            return jsonify(status="Created", game_status="")
     elif request.method == 'GET':
         LOG.debug("GET /player")
         return jsonify(players="[]")

@@ -33,7 +33,7 @@ def test_create_player():
     Creates a player - stubbed at first 
     """
     response = requests.post('http://127.0.0.1:5150/player')
-    assert response.status_code == 200
+    assert response.status_code == 404
 
 @pytest.mark.test_id(5)
 def test_retrieve_player_list():
@@ -58,6 +58,17 @@ def test_retrieve_game_status():
     Get game list - stubbed at first 
     """
     response = requests.get('http://127.0.0.1:5150/game')
+    assert response.status_code == 200
+
+@pytest.mark.test_id(4)
+def test_create_game_then_player():
+    """ test_create_player
+    Creates a player - stubbed at first 
+    """
+    params = {'name': 'amazing...'}    
+    response = requests.post('http://127.0.0.1:5150/game', data=params)
+    assert response.status_code == 200
+    response = requests.post('http://127.0.0.1:5150/player')
     assert response.status_code == 200
     
 @pytest.mark.test_id(9999)

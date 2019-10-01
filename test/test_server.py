@@ -68,7 +68,8 @@ def test_create_game_then_player():
     params = {'name': 'amazing...'}    
     response = requests.post('http://127.0.0.1:5150/game', data=params)
     assert response.status_code == 200
-    response = requests.post('http://127.0.0.1:5150/player')
+    player_name = {'player_name': 'kinky'}
+    response = requests.post('http://127.0.0.1:5150/player', data=player_name)
     assert response.status_code == 200
     
 @pytest.mark.test_id(9999)

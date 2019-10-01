@@ -42,6 +42,7 @@ def player():
         if GAME_OBJ is None:
             return Response("Game not created.", status=404)
         else:
+            GAME_OBJ.add_player(request.form['player_name'])
             return jsonify(status="Created", game_status="")
     elif request.method == 'GET':
         LOG.debug("GET /player")

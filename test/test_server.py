@@ -71,6 +71,38 @@ def test_create_game_then_player():
     player_name = {'player_name': 'kinky'}
     response = requests.post('http://127.0.0.1:5150/player', data=player_name)
     assert response.status_code == 200
+
+@pytest.mark.test_id(5)
+def test_create_game_then_two_player():
+    """ test_create_player
+    Creates two players - stubbed at first 
+    """
+    params = {'name': 'amazing...'}    
+    response = requests.post('http://127.0.0.1:5150/game', data=params)
+    assert response.status_code == 200
+    player_name = {'player_name': 'kinky'}
+    response = requests.post('http://127.0.0.1:5150/player', data=player_name)
+    player_name = {'player_name': 'boots'}
+    response = requests.post('http://127.0.0.1:5150/player', data=player_name)
+    assert response.status_code == 200
+
+@pytest.mark.test_id(6)
+def test_create_game_then_three_players():
+    """ test_create_player
+    Creates three players - stubbed at first 
+    """
+    params = {'name': 'amazing...'}    
+    response = requests.post('http://127.0.0.1:5150/game', data=params)
+    assert response.status_code == 200
+    player_name = {'player_name': 'kinky'}
+    response = requests.post('http://127.0.0.1:5150/player', data=player_name)
+    assert response.status_code == 200    
+    player_name = {'player_name': 'boots'}
+    response = requests.post('http://127.0.0.1:5150/player', data=player_name)
+    assert response.status_code == 200    
+    player_name = {'player_name': 'caligula'}
+    response = requests.post('http://127.0.0.1:5150/player', data=player_name)    
+    assert response.status_code == 500
     
 @pytest.mark.test_id(9999)
 def test_quitter():

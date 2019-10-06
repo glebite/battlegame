@@ -52,7 +52,6 @@ def test_three_player_creation_count_check():
 @pytest.mark.test_id(6)
 def test_player_name():
     game_obj = Game(name="Bob")
-    print(game_obj.return_players())
     game_obj.add_player("A")
     assert game_obj.players[0].player_name == "A"
 

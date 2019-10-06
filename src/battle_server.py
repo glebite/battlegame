@@ -31,7 +31,7 @@ def quitter():
     func()
     return jsonify(system_status="quitting", game_status="")
 
-@APP.route('/player', methods=["GET", "POST"])
+@APP.route('/player', methods=["GET", "POST", "DELETE"])
 def player():
     """
     player - first Create (POST)
@@ -43,10 +43,16 @@ def player():
             return Response("Game not created.", status=404)
         else:
             GAME_OBJ.add_player(request.form['player_name'])
-            return jsonify(status="Created", game_status="")
+            return jsonify(status=201, game_status="")
     elif request.method == 'GET':
         LOG.debug("GET /player")
-        return jsonify(players="[]")
+        LOG.debug("Players: {}".format(GAME_OBJ.return_players()))
+        LOG.debug("Allis good here...")
+        return Response(jsonify(players=GAME_OBJ.return_players()), status=200)
+    elif request.method == 'DELETE':
+        LOG.debug("DEL /player")
+        GAME_OBJ.players = list()
+        return jsonify(status=201)
 
 @APP.route('/game', methods=["GET", "POST"])
 def game():

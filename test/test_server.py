@@ -30,7 +30,7 @@ def test_status():
 @pytest.mark.test_id(4)
 def test_create_player():
     """ test_create_player
-    Creates a player - stubbed at first 
+    Creates a player - no game created
     """
     response = requests.post('http://127.0.0.1:5150/player')
     assert response.status_code == 404
@@ -41,7 +41,7 @@ def test_retrieve_player_list():
     Get player list - stubbed at first 
     """
     response = requests.get('http://127.0.0.1:5150/player')
-    assert response.status_code == 200
+    assert response.status_code == 500
 
 @pytest.mark.test_id(6)
 def test_create_game():
@@ -51,6 +51,7 @@ def test_create_game():
     params = {'name': 'amazing...'}
     response = requests.post('http://127.0.0.1:5150/game', data=params)
     assert response.status_code == 200
+    requests.delete('http://127.0.0.1:5150/player')
 
 @pytest.mark.test_id(7)
 def test_retrieve_game_status():
@@ -60,7 +61,7 @@ def test_retrieve_game_status():
     response = requests.get('http://127.0.0.1:5150/game')
     assert response.status_code == 200
 
-@pytest.mark.test_id(4)
+@pytest.mark.test_id(8)
 def test_create_game_then_player():
     """ test_create_player
     Creates a player - stubbed at first 
@@ -71,8 +72,9 @@ def test_create_game_then_player():
     player_name = {'player_name': 'kinky'}
     response = requests.post('http://127.0.0.1:5150/player', data=player_name)
     assert response.status_code == 200
+    requests.delete('http://127.0.0.1:5150/player')
 
-@pytest.mark.test_id(5)
+@pytest.mark.test_id(9)
 def test_create_game_then_two_player():
     """ test_create_player
     Creates two players - stubbed at first 
@@ -86,7 +88,7 @@ def test_create_game_then_two_player():
     response = requests.post('http://127.0.0.1:5150/player', data=player_name)
     assert response.status_code == 200
 
-@pytest.mark.test_id(6)
+@pytest.mark.test_id(10)
 def test_create_game_then_three_players():
     """ test_create_player
     Creates three players - stubbed at first 
@@ -103,6 +105,14 @@ def test_create_game_then_three_players():
     player_name = {'player_name': 'caligula'}
     response = requests.post('http://127.0.0.1:5150/player', data=player_name)    
     assert response.status_code == 500
+
+@pytest.mark.test_id(11)
+def test_get_list_of_players():
+    """ test_get_list_of_players
+    Creates three players - stubbed at first 
+    """
+    player_list = requests.get('http://127.0.0.1:5150/player')
+    print(player_list)
     
 @pytest.mark.test_id(9999)
 def test_quitter():

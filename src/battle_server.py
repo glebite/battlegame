@@ -47,7 +47,7 @@ def player():
     elif request.method == 'GET':
         LOG.debug("GET /player")
         LOG.debug("Players: {}".format(GAME_OBJ.return_players()))
-        LOG.debug("Allis good here...")
+        LOG.debug("All is good here...")
         return Response(jsonify(players=GAME_OBJ.return_players()), status=200)
     elif request.method == 'DELETE':
         LOG.debug("DEL /player")

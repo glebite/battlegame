@@ -63,3 +63,9 @@ def test_player_grid_default():
 def test_player_place_ship():
     player_obj = Player()
     assert player_obj.place_ship("hornblower") == "hornblower"
+
+@pytest.mark.test_id(10)
+def test_player_string_test():
+    player_obj = Player()
+    print(str(player_obj))
+    assert str(player_obj) == "Player: None\n\tHits: 0\n\tMisses: 0\n\tEnemy Sunk: 0\n\tMine Sunk: 0\n"

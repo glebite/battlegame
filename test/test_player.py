@@ -67,5 +67,15 @@ def test_player_place_ship():
 @pytest.mark.test_id(10)
 def test_player_string_test():
     player_obj = Player()
-    print(str(player_obj))
     assert str(player_obj) == "Player: None\n\tHits: 0\n\tMisses: 0\n\tEnemy Sunk: 0\n\tMine Sunk: 0\n"
+
+@pytest.mark.test_id(11)
+def test_player_string_test_name():
+    player_obj = Player("binkie")
+    assert str(player_obj) == "Player: binkie\n\tHits: 0\n\tMisses: 0\n\tEnemy Sunk: 0\n\tMine Sunk: 0\n"
+
+@pytest.mark.test_id(12)
+def test_player_string_test_hit():
+    player_obj = Player("binkie")
+    player_obj.hits()
+    assert str(player_obj) == "Player: binkie\n\tHits: 1\n\tMisses: 0\n\tEnemy Sunk: 0\n\tMine Sunk: 0\n"

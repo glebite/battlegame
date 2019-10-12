@@ -63,13 +63,14 @@ class Player:
         place_ship - places a ship piece in the grid
         TODO: fill in the blanks - define ship_piece object
         """
+        LOG.debug("Place ship %s", ship_piece)
         return ship_piece
 
     def out_view_grid(self):
         """
         out_view_grid - for now prints out the view_grid
         """
-        print(self.view_grid)
+        LOG.debug("Output of grid: %s", self.view_grid)
         return self.view_grid
 
     def __rpr__(self):

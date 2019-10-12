@@ -38,15 +38,18 @@ class ShipPiece:
     @property
     def size(self):
         """ size retrieval """
+        LOG.debug("Size: %s", self.__size)
         return self.__size
 
     @property
     def name(self):
         """ name retrieval """
+        LOG.debug("Name: %s", self.__name)
         return self.__name
 
     def still_floating(self):
         """ still_floating """
+        LOG.debug("Holes: %s Number of Holes: %s", self.holes.count(1), len(self.holes))
         if self.holes.count(1) == len(self.holes):
             return False
         else:
@@ -54,6 +57,7 @@ class ShipPiece:
 
     def percentage_floating(self):
         """ percentage_floating """
+        LOG.debug("Percent floating...")
         return self.holes.count(1) / float(len(self.holes))
 
 

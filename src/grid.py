@@ -29,6 +29,7 @@ class Grid:
 
     def create_grid(self):
         """ create_grid """
+        LOG.debug("Creating grid and allocating space...")
         if self.rows <= 0 or self.cols <= 0:
             raise ValueError("rows or cols cannot be <= 0")
         grid = [[0 for x in range(self.cols)] for y in range(self.rows)]
@@ -36,15 +37,18 @@ class Grid:
 
     def create_own_grid(self):
         """ create_own_grid """
+        LOG.debug("Creating own grid")
         self.grid = self.create_grid()
         return True
 
     def get_grid_position(self, row, col):
         """ get_grid_position """
+        LOG.debug("Getting grid position row {} col {}", row, col)
         return self.grid[row][col]
 
     def set_grid_position(self, row, col, value):
         """ set_grid_position """
+        LOG.debug("Setting grid position row {} col {} value {}", row, col, value)
         self.grid[row][col] = value
         return True
 
@@ -55,6 +59,7 @@ class Grid:
         placement is based on r_pos, c_pos, size of ship_piece, and orientation
                   based on that from that seed point
         """
+        LOG.debug("Placing ship: r_pos {}, c_pos {}, ship_piece {}, orientation {}", r_pos, c_pos, ship_piece, orientation)
         allowed_orientations = ['horizontal', 'vertical']
         if orientation in allowed_orientations:
             pass

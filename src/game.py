@@ -34,6 +34,7 @@ class Game:
         """
         add_player
         """
+        LOG.debug("Adding player %s", player_name)
         if len(self.players) == MAX_PLAYERS:
             raise GameMaxPlayersExceeded()
         player_obj = Player(name=player_name)
@@ -45,6 +46,7 @@ class Game:
         return_players - will do more
         TODO: do more
         """
+        LOG.debug("Returning players...")
         return self.players
 
 

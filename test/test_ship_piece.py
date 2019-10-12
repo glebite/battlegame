@@ -58,3 +58,15 @@ def test_ship_still_floating_filled():
     sp_obj = ShipPiece(ship_size=1,ship_name="tug")
     sp_obj.holes[0] = 1
     assert sp_obj.still_floating() == False
+
+@pytest.mark.test_id(9)
+def test_ship_floating_percent_default():
+    sp_obj = ShipPiece(ship_size=4,ship_name="submarine")
+    assert sp_obj.percentage_floating() == 0.0
+
+@pytest.mark.test_id(10)
+def test_ship_floating_percent_fifty():
+    sp_obj = ShipPiece(ship_size=4,ship_name="submarine")
+    sp_obj.holes[1] = 1
+    sp_obj.holes[2] = 1
+    assert sp_obj.percentage_floating() == 0.5

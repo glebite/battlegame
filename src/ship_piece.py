@@ -52,6 +52,10 @@ class ShipPiece:
         else:
             return True
 
+    def percentage_floating(self):
+        """ percentage_floating """
+        return self.holes.count(1) / float(len(self.holes))
+
 
 def main():
     """

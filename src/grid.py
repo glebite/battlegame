@@ -2,6 +2,14 @@
 grid.py
 
 """
+import os
+import logging
+
+FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
+logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
+LOG = logging.getLogger(__name__)
+
+
 class GridIncorrectOrientationException(Exception):
     """ if orientation is not proper """
 

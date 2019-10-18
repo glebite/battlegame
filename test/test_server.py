@@ -113,6 +113,15 @@ def test_get_list_of_players():
     """
     player_list = requests.get('http://127.0.0.1:5150/player')
     print(player_list)
+
+@pytest.mark.test_id(12)
+def test_create_game_then_fire_shot():
+    """ test_create_player
+    Creates a player - stubbed at first 
+    """
+    params = {'name': 'amazing...'}    
+    response = requests.post('http://127.0.0.1:5150/player/fire', data=params)
+    assert response.status_code == 200
     
 @pytest.mark.test_id(9999)
 def test_quitter():

@@ -54,6 +54,20 @@ def player():
         GAME_OBJ.players = list()
         return jsonify(status=201)
 
+@APP.route('/player/fire', methods=["POST"])
+def fire():
+    """
+    fire - fire a shot into the grid
+    """
+    global GAME_OBJ
+    if request.method == 'POST':
+        LOG.debug("POST /player/fire")
+        return jsonify(status=201)
+    else:
+        LOG.debug("Received unexpected POST endpoint {}".format(request.method))
+        return jsonify(status=503)
+    
+    
 @APP.route('/game', methods=["GET", "POST"])
 def game():
     """

@@ -1,6 +1,7 @@
 """
 grid.py
 
+used to define the grid for the playing field
 """
 import os
 import logging
@@ -8,6 +9,9 @@ import logging
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
+EMPTY = 0
+HIT_SHIP = 1
+MISS_SHIP = 2
 
 
 class GridIncorrectOrientationException(Exception):
@@ -40,7 +44,7 @@ class Grid:
         LOG.debug("Creating grid and allocating space...")
         if self.rows <= 0 or self.cols <= 0:
             raise ValueError("rows or cols cannot be <= 0")
-        grid = [[0 for x in range(self.cols)] for y in range(self.rows)]
+        grid = [[EMPTY for x in range(self.cols)] for y in range(self.rows)]
         return grid
 
     def create_own_grid(self):
@@ -86,6 +90,9 @@ class Grid:
         return True
 
     def __str__(self):
+        """
+        __str__ - return a string representation of the grid
+        """
         out_string = ""
         for row in range(self.rows):
             for col in range(self.cols):

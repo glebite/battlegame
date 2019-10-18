@@ -9,6 +9,7 @@ FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
 LOG = logging.getLogger(__name__)
 
+
 class ShipPieceSizeException(Exception):
     """
     ShipPieceSizeException - raised if the size is bad

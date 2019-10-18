@@ -11,7 +11,15 @@ LOG = logging.getLogger(__name__)
 
 
 class Player:
-    """ class Player """
+    """ 
+    class Player
+
+    Essentially there will be two players created - each with
+    their own view of a grid - the game grid where their ships are 
+    and recording hits.  As well, the view grid where the player can
+    see where they scored a hit on the enemy or a miss to remove the
+    position from selection in the future or an automated attack.
+    """
     my_hits = 0
     my_misses = 0
     enemy_sunk = 0

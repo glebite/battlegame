@@ -3,6 +3,7 @@ player.py
 """
 import os
 import logging
+import json
 from grid import Grid
 
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
@@ -44,6 +45,17 @@ class Player:
         self.my_misses = 0
         self.enemy_sunk = 0
         self.mine_sunk = 0
+
+    def get_stats(self):
+        """
+        get_stats - returns a json artifact with the stats
+        """
+        string_response= json.dumps({'name': self.player_name,
+                                     'hits': self.my_hits,
+                                     'misses': self.my_misses,
+                                     'sunk': self.enemy_sunk,
+                                     'my_sunk': self.mine_sunk})
+        return json.loads(string_response)
 
     def hits(self):
         """

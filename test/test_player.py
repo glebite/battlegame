@@ -79,3 +79,9 @@ def test_player_string_test_hit():
     player_obj = Player("binkie")
     player_obj.hits()
     assert str(player_obj) == "Player: binkie\n\tHits: 1\n\tMisses: 0\n\tEnemy Sunk: 0\n\tMine Sunk: 0\n"
+
+@pytest.mark.test_id(13)
+def test_player_string_test_stats():
+    player_obj = Player("binkie")
+    results = player_obj.get_stats()
+    assert results['name'] == "binkie"

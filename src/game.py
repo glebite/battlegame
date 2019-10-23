@@ -49,6 +49,14 @@ class Game:
         LOG.debug("Returning players...")
         return self.players
 
+    def return_player_info(self, name):
+        """
+        """
+        LOG.debug("Returning a specific player")
+        for player_obj in self.players:
+            if player_obj.player_name == name:
+                return player_obj.get_stats()
+
 
 def main():
     """ main """

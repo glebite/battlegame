@@ -59,3 +59,10 @@ def test_player_name():
 def test_game_creation_status():
     game_obj = Game(name="Bob")
     assert game_obj.game_status == GAME_INITIATION
+
+@pytest.mark.test_id(8)
+def test_player_stats():
+    game_obj = Game(name="Bob")
+    game_obj.add_player("A")
+    assert game_obj.return_player_info("A")['name'] == "A"
+    

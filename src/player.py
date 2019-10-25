@@ -82,6 +82,7 @@ class Player:
         """
         place_ship - places a ship piece in the grid
         TODO: fill in the blanks - define ship_piece object
+        :param: ship_piece - actual ship_piece object
         """
         LOG.debug("Place ship %s", ship_piece)
         return ship_piece

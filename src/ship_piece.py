@@ -26,6 +26,9 @@ class ShipPiece:
     def __init__(self, ship_size=None, ship_name=None):
         """
         __init__ - all of the init goodness that there is to have
+
+        :param: ship_size = None 
+        :param: ship_name = None
         """
         if ship_size <= 0:
             raise ShipPieceSizeException()

@@ -9,15 +9,30 @@ import battle_server
 import requests
 import os
 
+NOT_DONE = 0
+DONE = 1
+
 class GameClient:
     def __init__(self):
+        self.state = NOT_DONE
         try:
             params = {'name': 'battle_server'}
             response = requests.post('127.0.0.1:5150/game', data=params)
         except Exception as e:
             print(e)
-        requests.post('http://127.0.0.1:5150/quitter')
 
+    def quit_game(self):
+        response = requests.post('http://127.0.0.1:5150/quitter')
+        return
+    
+    def player_input(self):
+        command = raw_input("Enter player command: ")
+        if command == "quit":
+            self.state = DONE
+            self.quit_game()
+        return command
+
+    
 def play():
     command = raw_input("Enter your name: ")
     # params = {'name': 'battle_server'}
@@ -36,3 +51,6 @@ def play():
     
 if __name__ == "__main__":
     client_obj = GameClient()
+    while client_obj.state is NOT_DONE:
+        command = client_obj.player_input()
+        print("Executing command: {}".format(command))

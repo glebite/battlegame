@@ -21,6 +21,11 @@ class GameClient:
         except Exception as e:
             print(e)
 
+    def create_player(self, player_name):
+        player_info = {'player_name': player_name}
+        response = requests.post('http://127.0.0.1:5150/player', data=player_info)
+        return
+    
     def quit_game(self):
         response = requests.post('http://127.0.0.1:5150/quitter')
         return

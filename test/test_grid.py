@@ -9,6 +9,7 @@ import sys
 sys.path.append('../src')
 from grid import *
 from ship_piece import *
+from cell import *
 
 @pytest.mark.test_id(1)
 def test_grid_creation():
@@ -37,14 +38,16 @@ def test_reinstantiation():
 def test_grid_positions():
     x_obj = Grid()
     x_obj.create_own_grid()
-    assert x_obj.set_grid_position(5, 5, 1) is True
+    cell_obj = Cell()
+    assert x_obj.set_grid_position(5, 5, cell_obj) is True
 
 @pytest.mark.test_id(6)
 def test_grid_position_values():
     x_obj = Grid()
     x_obj.create_own_grid()
-    x_obj.set_grid_position(5, 5, 1)
-    assert x_obj.get_grid_position(5, 5) == 1 and x_obj.get_grid_position(5, 4) == 0
+    cell_obj = Cell()
+    x_obj.set_grid_position(5, 5, cell_obj)
+    assert type(x_obj.get_grid_position(5, 5)) is Cell
     
 @pytest.mark.test_id(7)
 def test_grid_place_ship_safe_vertical():

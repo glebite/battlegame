@@ -5,6 +5,7 @@ used to define the grid for the playing field
 """
 import os
 import logging
+import cell
 
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
@@ -44,7 +45,7 @@ class Grid:
         LOG.debug("Creating grid and allocating space...")
         if self.rows <= 0 or self.cols <= 0:
             raise ValueError("rows or cols cannot be <= 0")
-        grid = [[EMPTY for x in range(self.cols)] for y in range(self.rows)]
+        grid = [[cell.Cell() for x in range(self.cols)] for y in range(self.rows)]
         return grid
 
     def create_own_grid(self):

@@ -6,6 +6,8 @@ EMPTY = 0
 HIT = 1
 SHIP = 2
 SUNK = 4
+MISS = 8
+
 
 class Cell:
     def __init__(self):
@@ -34,7 +36,8 @@ class Cell:
         state_dict = {EMPTY: ' ',
                       HIT: 'H',
                       SHIP: 'S',
-                      SUNK: '*'}
+                      SUNK: '*',
+                      MISS: 'M'}
         return state_dict[self.state]
 
     

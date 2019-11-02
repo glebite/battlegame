@@ -13,3 +13,8 @@ from cell import *
 def test_cell_creation():
     x_obj = Cell()
     assert x_obj is not None
+
+@pytest.mark.test_id(2)
+def test_cell_creation_value():
+    x_obj = Cell()
+    assert x_obj.state == 0 and x_obj.contains_piece_of_ship == None

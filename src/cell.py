@@ -34,7 +34,7 @@ class Cell:
         self.__contains_piece_of_ship = value
 
     def __str__(self):
-        state_dict = {EMPTY: ' ',
+        state_dict = {EMPTY: '.',
                       HIT: 'H',
                       SHIP: 'S',
                       SUNK: '*',

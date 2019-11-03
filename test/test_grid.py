@@ -106,3 +106,11 @@ def test_grid_place_ship_invalid_seed_placement():
         assert False
     except GridBadSeedLocationException as orientation_exception:
         assert True
+
+@pytest.mark.test_id(13)
+def test_grid_place_ship_works():
+    x_obj = Grid()
+    x_obj.create_own_grid()
+    sp_obj = ShipPiece(2, "submarine")
+    x_obj.place_ship(1, 1, sp_obj, "horizontal")
+    assert x_obj.grid[1][1].contains_piece_of_ship == sp_obj

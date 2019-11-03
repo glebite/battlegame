@@ -56,12 +56,12 @@ class Grid:
 
     def get_grid_position(self, row, col):
         """ get_grid_position """
-        LOG.debug("Getting grid position row {} col {}", row, col)
+        LOG.debug("Getting grid position row %s col %s", row, col)
         return self.grid[row][col]
 
     def set_grid_position(self, row, col, value):
         """ set_grid_position """
-        LOG.debug("Setting grid position row {} col {} value {}", row, col, value)
+        LOG.debug("Setting grid position row %s col %s value %s", row, col, value)
         self.grid[row][col] = value
         return True
 
@@ -72,9 +72,9 @@ class Grid:
         placement is based on r_pos, c_pos, size of ship_piece, and orientation
                   based on that from that seed point
         """
-        LOG.debug("Placing ship: r_pos {}, c_pos {},"
-                  "ship_piece {}, orientation {}".format(
-                  r_pos, c_pos, ship_piece, orientation))
+        LOG.debug("Placing ship: r_pos %s, c_pos %s,"
+                  "ship_piece %s, orientation %s",
+                  r_pos, c_pos, ship_piece, orientation)
         allowed_orientations = ['horizontal', 'vertical']
         if orientation in allowed_orientations:
             pass
@@ -95,7 +95,7 @@ class Grid:
     def place_ship(self, r_pos, c_pos, ship_piece, orientation):
         """ Place a ship on the grid.
 
-        Notes: 
+        Notes:
 
         Assumes that the test_place_ship was called first.
 
@@ -114,7 +114,7 @@ class Grid:
                 self.grid[r_pos+i][c_pos].contains_piece_of_ship = ship_piece
                 self.grid[r_pos+i][c_pos].state = cell.SHIP
         else:
-            raise GridIncorrectOrientationException()    
+            raise GridIncorrectOrientationException()
 
     def __str__(self):
         """

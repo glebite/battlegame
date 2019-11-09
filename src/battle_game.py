@@ -20,49 +20,45 @@ class GameClient:
         try:
             params = {'name': 'battle_server'}
             response = requests.post('127.0.0.1:5150/game', data=params)
+            self.game_started = True
+            return response
         except Exception as e:
+            self.game_started = False
             print(e)
-        return response
+        return
 
     def create_player(self, player_name):
         """ create_player """
-        player_info = {'player_name': player_name}
-        response = requests.post('http://127.0.0.1:5150/player', data=player_info)
+        if self.game_started:
+            player_info = {'player_name': player_name}
+            response = requests.post('http://127.0.0.1:5150/player', data=player_info)
+        else:
+            print("Nope! - can't create a game as the server isn't running...")
         return response
-
+    
     def quit_game(self):
         """ quit_game """
-        response = requests.post('http://127.0.0.1:5150/quitter')
+        print("Executing quit_game...")
+        if self.game_started:
+            response = requests.post('http://127.0.0.1:5150/quitter')
+        else:
+            response = ""
+        print("Bye!")
         return response
-
-    def player_input(self):
-        """ player_input """
-        command = raw_input("Enter player command: ")
-        if command == "quit":
-            self.state = DONE
-            self.quit_game()
-        return command
 
 def play():
     """ play """
-    command = raw_input("Enter your name: ")
-    print("name = {}".format(command))
-    # params = {'name': 'battle_server'}
-    # response = requests.post('http://127.0.0.1:5150/game', data=params)
-    # if response.status_code is not 200:
-    #     print("Problem with starting game...")
-    # player_name = {'player_name': 'MacArthur'}
-    # response = requests.post('http://127.0.0.1:5150/player', data=player_name)
-    # if response.status_code is not 200:
-    #     print("Problem with creating player")
-    # response = requests.post('http://127.0.0.1:5150/player/fire')
-    # if response.status_code is not 201:
-    #     print("Problem firing a shot")
-    # requests.post('http://127.0.0.1:5150/quitter')
-
+    client_obj = GameClient()
+    while client_obj.state == NOT_DONE:
+        command = input("command? ")
+        print("command = {}".format(command))
+        if command == "quit":
+            client_obj.quit_game()
+            return
+        elif command == "create_player":
+            client_obj.create_player("")
+        else:
+            print("unknown command...")
 
 if __name__ == "__main__":
-    CLIENT_OBJ = GameClient()
-    while CLIENT_OBJ.state is NOT_DONE:
-        COMMAND_INPUT = CLIENT_OBJ.player_input()
-        print("Executing command: {}".format(COMMAND_INPUT))
+    play()

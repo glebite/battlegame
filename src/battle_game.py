@@ -56,7 +56,8 @@ def play():
             client_obj.quit_game()
             return
         elif command == "create_player":
-            client_obj.create_player("")
+            player_name = input("Enter player name: ")
+            client_obj.create_player(player_name)
         else:
             print("unknown command...")
 

@@ -23,7 +23,7 @@ def test_cell_creation_value():
 def test_state_output_empty():
     x_obj = Cell()
     x_obj.state = EMPTY
-    assert x_obj.__str__() == ' '
+    assert x_obj.__str__() == '.'
 
 @pytest.mark.test_id(4)
 def test_state_output_hit():

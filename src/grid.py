@@ -29,7 +29,8 @@ class GridBadSeedLocationException(Exception):
 
 
 class Grid:
-    """ class Grid """
+    """ class Grid 
+    """
     def __init__(self, shape=None):
         """ shape is a tuple """
         self.grid = None
@@ -41,7 +42,9 @@ class Grid:
             self.cols = 10
 
     def create_grid(self):
-        """ create_grid """
+        """ create_grid
+        Creates a grid of cells based on rows and cols of the grid
+        """
         LOG.debug("Creating grid and allocating space...")
         if self.rows <= 0 or self.cols <= 0:
             raise ValueError("rows or cols cannot be <= 0")

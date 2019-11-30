@@ -93,3 +93,9 @@ def test_player_minimal_place_ship():
     ship_piece = ShipPiece(ship_size=2, ship_name="Woohoo!")
     returned_piece = player_obj.place_ship(ship_piece)
     assert returned_piece.name == "Woohoo!"
+
+@pytest.mark.test_id(15)
+def test_player_minimal_out_view_grid():
+    player_obj = Player("ریحانه")
+    view_grid = player_obj.out_view_grid()
+    assert view_grid is not None   

@@ -8,6 +8,7 @@ import sys
 import pytest
 sys.path.append('../src')
 from player import Player
+from ship_piece import ShipPiece
 
 @pytest.mark.test_id(1)
 def test_player_creation():
@@ -85,3 +86,10 @@ def test_player_string_test_stats():
     player_obj = Player("binkie")
     results = player_obj.get_stats()
     assert results['name'] == "binkie"
+
+@pytest.mark.test_id(14)
+def test_player_minimal_place_ship():
+    player_obj = Player("Bob")
+    ship_piece = ShipPiece(ship_size=2, ship_name="Woohoo!")
+    returned_piece = player_obj.place_ship(ship_piece)
+    assert returned_piece.name == "Woohoo!"

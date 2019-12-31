@@ -58,6 +58,10 @@ def play():
         elif command == "create_player":
             player_name = input("Enter player name: ")
             client_obj.create_player(player_name)
+        elif command == "start_game":
+            pass
+        elif command == "help":
+            print("quit create_player start_game")
         else:
             print("unknown command...")
 

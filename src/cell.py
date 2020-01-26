@@ -1,18 +1,20 @@
 """
 Cell.py
 """
+from enum import Enum
 
-EMPTY = 0
-HIT = 1
-SHIP = 2
-SUNK = 4
-MISS = 8
+class States(Enum):
+    EMPTY = 0
+    HIT = 1
+    SHIP = 2
+    SUNK = 4
+    MISS = 8
 
-
+    
 class Cell:
     """ Cell - one entry in the grid"""
     def __init__(self):
-        self.__state = EMPTY
+        self.__state = States.EMPTY
         self.__contains_piece_of_ship = None
 
     @property
@@ -34,11 +36,11 @@ class Cell:
         self.__contains_piece_of_ship = value
 
     def __str__(self):
-        state_dict = {EMPTY: '.',
-                      HIT: 'H',
-                      SHIP: 'S',
-                      SUNK: '*',
-                      MISS: 'M'}
+        state_dict = {States.EMPTY: '.',
+                      States.HIT: 'H',
+                      States.SHIP: 'S',
+                      States.SUNK: '*',
+                      States.MISS: 'M'}
         return state_dict[self.state]
 
 

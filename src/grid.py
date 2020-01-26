@@ -111,11 +111,11 @@ class Grid:
         if orientation == "horizontal":
             for i in range(ship_piece.size):
                 self.grid[r_pos][c_pos+i].contains_piece_of_ship = ship_piece
-                self.grid[r_pos][c_pos+i].state = cell.SHIP
+                self.grid[r_pos][c_pos+i].state = cell.States.SHIP
         elif orientation == "vertical":
             for i in range(ship_piece.size):
                 self.grid[r_pos+i][c_pos].contains_piece_of_ship = ship_piece
-                self.grid[r_pos+i][c_pos].state = cell.SHIP
+                self.grid[r_pos+i][c_pos].state = cell.States.SHIP
         else:
             raise GridIncorrectOrientationException()
 

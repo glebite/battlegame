@@ -4,9 +4,11 @@ game.py - got game?
 import os
 import logging
 from player import Player
+from enum import Enum
 
-MAX_PLAYERS = 2
-GAME_INITIATION = 1
+class GameStates(Enum):
+    MAX_PLAYERS = 2
+    GAME_INITIATION = 1
 
 FORMAT = "[%(filename)s:%(lineno)s - %(funcName)20s() ] %(message)s"
 logging.basicConfig(format=FORMAT, level=os.environ.get("LOGLEVEL", "DEBUG"))
@@ -26,7 +28,7 @@ class Game:
         __init__ - all of the init goodness
         """
         self.players = list()
-        self.game_status = GAME_INITIATION
+        self.game_status = GameStates.GAME_INITIATION
         LOG.debug("Init %s with game_name = %s", self.__class__, name)
         self.game_name = name
 
@@ -35,7 +37,7 @@ class Game:
         add_player
         """
         LOG.debug("Adding player %s", player_name)
-        if len(self.players) == MAX_PLAYERS:
+        if len(self.players) == GameStates.MAX_PLAYERS:
             raise GameMaxPlayersExceeded()
         player_obj = Player(name=player_name)
         self.players.append(player_obj)

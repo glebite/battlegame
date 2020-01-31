@@ -25,7 +25,7 @@ def test_two_player_creation():
     game_obj3 = Game(name="Bob3")
     game_obj3.add_player("C")
     game_obj3.add_player("D")
-    assert len(game_obj3.return_players()) == MAX_PLAYERS
+    assert len(game_obj3.return_players()) == GameStates.MAX_PLAYERS
     
 @pytest.mark.test_id(4)
 def test_three_player_creation():
@@ -47,7 +47,7 @@ def test_three_player_creation_count_check():
     try:
         game_obj.add_player("C")
     except GameMaxPlayersExceeded as raised_exception:
-        assert len(game_obj.return_players()) == MAX_PLAYERS
+        assert len(game_obj.return_players()) == GameStates.MAX_PLAYERS
         
 @pytest.mark.test_id(6)
 def test_player_name():
@@ -58,7 +58,7 @@ def test_player_name():
 @pytest.mark.test_id(7)
 def test_game_creation_status():
     game_obj = Game(name="Bob")
-    assert game_obj.game_status == GAME_INITIATION
+    assert game_obj.game_status == GameStates.GAME_INITIATION
 
 @pytest.mark.test_id(8)
 def test_player_stats():
